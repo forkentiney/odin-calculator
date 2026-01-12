@@ -1,0 +1,82 @@
+:root {
+  --bg-dark: hsl(200 90% 15%);
+  --bg-light: hsl(175 60% 25%);
+  --shadow: hsl(200 90% 0%);
+  --text: hsl(40 70% 95%);
+  --titles: hsl(40 70% 100%);
+  --text-muted: hsl(40 70% 85%);
+  --primary: hsl(40 70% 75%);
+  --secondary: hsl(330 30% 20%);
+  --danger: hsl(340 100% 40%);
+  --warning: hsl(20 100% 40%);
+  --success: hsl(60 100% 40%);
+}
+
+* {
+  margin: 0px;
+  padding: 0px; 
+  border: 0px;
+  font-size: 100%;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  box-sizing: border-box;
+  color: inherit;
+  background-color: inherit;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text);
+}
+
+#viewport {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  font-size: 14px;
+}
+
+.license, .credit, .contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.license {
+  grid-column: 1;
+}
+
+.credit {
+  grid-column: 2;
+}
+
+.contact {
+  grid-column: 3;
+}
+
+.license a,
+.icon {
+  margin: 1rem;
+  height: 2rem;
+  width: auto;
+}
+
+.icon {
+  height: 24px;
+  width: auto;
+  color: var(--danger);
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+}
