@@ -28,6 +28,15 @@
 body {
   background-color: var(--bg-dark);
   color: var(--text);
+  font-size: 18px;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+
+h1 {
+  color: var(--titles);
+  font-size: 56px;
 }
 
 #viewport {
@@ -37,7 +46,36 @@ body {
   justify-content: space-between;
 }
 
+#header {
+  background-color: var(--bg-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0px 4px 8px var(--shadow);
+}
+
+#nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 20px;
+  flex-wrap: wrap;
+}
+
+#nav a {
+  text-decoration: none;
+  padding: 0 12px;
+}
+
+#nav a:hover {
+  color: var(--primary);
+}
+
 #footer {
+  background-color: var(--secondary);
+  box-shadow: 0px -4px 8px var(--shadow);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   font-size: 14px;
