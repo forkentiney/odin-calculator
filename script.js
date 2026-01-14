@@ -1,18 +1,37 @@
 const buttons = document.querySelectorAll("button");
 const display = document.getElementById("display");
 
-const one = 1;
-const two = 2;
-const three = 3;
-const four = 4;
-const five = 5;
-const six = 6;
-const seven = 7;
-const eight = 8;
-const nine = 9;
-const zero = 0;
+const one = document.getElementById("one").firstElementChild;
+const two = document.getElementById("two").firstElementChild;
+const three = document.getElementById("three").firstElementChild;
 
 let onScreen = [];
+
+addEventListener("keydown", useKey);
+addEventListener("keyup", stopUseKey);
+
+function useKey(key) {
+  if (key.code == "Digit1") {
+    one.classList.add("pressed");
+    useCalc("one");
+  } else if (key.code == "Digit2") {
+    two.classList.add("pressed");
+    useCalc("two");
+  } else if (key.code == "Digit3") {
+    three.classList.add("pressed");
+    useCalc("three");
+  };
+};
+
+function stopUseKey(key) {
+  if (key.code == "Digit1") {
+    one.classList.remove("pressed");
+  } else if (key.code == "Digit2") {
+    two.classList.remove("pressed");
+  } else if (key.code == "Digit3") {
+    three.classList.remove("pressed");
+  };
+};
 
 buttons.forEach(button => button.addEventListener("click", () => {
   useCalc(button.id);
@@ -25,13 +44,13 @@ function useCalc(id) {
   } else if (onScreen.length > 9) {
     display.textContent = "ERR";
   } else if (id == "one") {
-    onScreen.push(one);
+    onScreen.push(1);
     display.textContent = onScreen.join("");
   } else if (id == "two") {
-    onScreen.push(two);
+    onScreen.push(2);
     display.textContent = onScreen.join("");
   } else if (id == "three") {
-    onScreen.push(three);
+    onScreen.push(3);
     display.textContent = onScreen.join("");
   };
 };
