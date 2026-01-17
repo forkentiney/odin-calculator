@@ -23,7 +23,7 @@ const equals = document.getElementById("equals").firstElementChild;
 
 let onScreen = [];
 
-const calculation = {
+let calculation = {
   value1: null,
   value2: null,
   operant: null,
@@ -111,6 +111,12 @@ function useCalc(id) {
   if (id == "clear") {
     onScreen = [];
     display.textContent = onScreen;
+    calculation = {
+      value1: null,
+      value2: null,
+      operant: null,
+      result: null,
+    };
   } else if (id == "back") {
     onScreen.pop();
     display.textContent = onScreen.join("");
@@ -185,7 +191,7 @@ function calculate() {
     display.textContent = Math.floor(calculation.result * 1000000000) / 1000000000;
   };
   calculation = {
-    value1: ,
+    value1: calculation.result,
     value2: null,
     operant: null,
     result: null,
