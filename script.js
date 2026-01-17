@@ -23,6 +23,13 @@ const equals = document.getElementById("equals").firstElementChild;
 
 let onScreen = [];
 
+const calculation = {
+  value1: null,
+  value2: null,
+  operant: null,
+  result: null,
+};
+
 addEventListener("keydown", useKey);
 addEventListener("keyup", stopUseKey);
 
@@ -139,5 +146,48 @@ function useCalc(id) {
   } else if (id == "zero") {
     onScreen.push(0);
     display.textContent = onScreen.join("");
+  } else if (id == "divide") {
+    calculation.value1 = Number(onScreen.join(""));
+    calculation.operant = "/";
+    onScreen = [];
+  } else if (id == "multiply") {
+    calculation.value1 = Number(onScreen.join(""));
+    calculation.operant = "*";
+    onScreen = [];
+  } else if (id == "subtract") {
+    calculation.value1 = Number(onScreen.join(""));
+    calculation.operant = "-";
+    onScreen = [];
+  } else if (id == "add") {
+    calculation.value1 = Number(onScreen.join(""));
+    calculation.operant = "+";
+    onScreen = [];
+  } else if (id == "equals") {
+    calculation.value2 = Number(onScreen.join(""));
+    calculate();
+  };
+};
+
+function calculate() {
+  if (calculation.operant == "/") {
+    calculation.result = calculation.value1 / calculation.value2;
+  } else if (calculation.operant == "*") {
+    calculation.result = calculation.value1 * calculation.value2;
+  } else if (calculation.operant == "-") {
+    calculation.result = calculation.value1 - calculation.value2;
+  } else if (calculation.operant == "+") {
+    calculation.result = calculation.value1 + calculation.value2;
+  };
+  onScreen = [];
+  if (String(calculation.result).length > 9) {
+    display.textContent = "ERR";
+  } else {
+    display.textContent = Math.floor(calculation.result * 1000000000) / 1000000000;
+  };
+  calculation = {
+    value1: ,
+    value2: null,
+    operant: null,
+    result: null,
   };
 };
