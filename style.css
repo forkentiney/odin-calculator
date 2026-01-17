@@ -99,6 +99,27 @@ h1 {
   color: black;
 }
 
+@keyframes rotate {
+  0% {transform: rotateZ(0deg);}
+  100% {transform: rotateZ(180deg);}
+}
+
+@keyframes unrotate {
+  0% {transform: rotateZ(180deg);}
+  100% {transform: rotateZ(0deg);}
+}
+
+.rotated {
+  animation-name: rotate;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
+.unrotate {
+  animation-name: unrotate;
+  animation-duration: 3s;
+}
+
 #title {
   font-size: 36px;
   font-weight: 800;

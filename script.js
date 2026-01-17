@@ -1,5 +1,6 @@
 const buttons = document.querySelectorAll(".button");
 const display = document.getElementById("display");
+const calculator = document.getElementById("calculator");
 
 const one = document.getElementById("one").firstElementChild;
 const two = document.getElementById("two").firstElementChild;
@@ -153,26 +154,32 @@ function useCalc(id) {
     onScreen.push(0);
     display.textContent = onScreen.join("");
   } else if (id == "divide") {
-    calculation.value1 = Number(onScreen.join(""));
-    calculation.operant = "/";
-    onScreen = [];
+    testContinue("/");
   } else if (id == "multiply") {
-    calculation.value1 = Number(onScreen.join(""));
-    calculation.operant = "*";
-    onScreen = [];
+    testContinue("*");
   } else if (id == "subtract") {
-    calculation.value1 = Number(onScreen.join(""));
-    calculation.operant = "-";
-    onScreen = [];
+    testContinue("-");
   } else if (id == "add") {
-    calculation.value1 = Number(onScreen.join(""));
-    calculation.operant = "+";
-    onScreen = [];
+    testContinue("+");
   } else if (id == "equals") {
     calculation.value2 = Number(onScreen.join(""));
     calculate();
   };
+  boobies();
 };
+
+function testContinue() {
+  value = Number(onScreen.join(""));
+
+  if (calculation.value1 === null) {
+    calculation.value1 = value;
+  } else {
+    calculation.value2 = value;
+    calculate();
+  };
+
+  onScreen = [];
+}
 
 function calculate() {
   if (calculation.operant == "/") {
@@ -185,15 +192,24 @@ function calculate() {
     calculation.result = calculation.value1 + calculation.value2;
   };
   onScreen = [];
-  if (String(calculation.result).length > 9) {
+  result = Math.floor(calculation.result * 1000000000) / 1000000000;
+  if (String(result).length > 12) {
     display.textContent = "ERR";
   } else {
-    display.textContent = Math.floor(calculation.result * 1000000000) / 1000000000;
+    display.textContent = result;
   };
   calculation = {
-    value1: calculation.result,
+    value1: String(calculation.result),
     value2: null,
     operant: null,
     result: null,
+  };
+};
+
+function boobies() {
+  if (display.textContent == "5318008") {
+    calculator.classList.add("rotated");
+  } else {
+    calculator.classList.remove("rotated");
   };
 };
