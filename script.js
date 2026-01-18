@@ -71,8 +71,22 @@ function useKey(key) {
     useCalc("back");
   } else if (key.code == "Enter") {
     equals.classList.add("pressed");
-    equals.focus();
     useCalc("equals");
+  } else if (key.code == "Slash") {
+    divide.classList.add("pressed");
+    useCalc("divide");
+  } else if (key.code == "KeyX") {
+    multiply.classList.add("pressed");
+    useCalc("multiply");
+  } else if (key.code == "Minus") {
+    subtract.classList.add("pressed");
+    useCalc("subtract");
+  } else if (key.code == "Equal") {
+    add.classList.add("pressed");
+    useCalc("add");
+  } else if (key.code == "KeyC") {
+    clear.classList.add("pressed");
+    useCalc("clear");
   };
 };
 
@@ -101,6 +115,16 @@ function stopUseKey(key) {
     backspace.classList.remove("pressed");
   } else if (key.code == "Enter") {
     equals.classList.remove("pressed");
+  } else if (key.code == "Slash") {
+    divide.classList.remove("pressed");
+  } else if (key.code == "KeyX") {
+    multiply.classList.remove("pressed");
+  } else if (key.code == "Minus") {
+    subtract.classList.remove("pressed");
+  } else if (key.code == "Equal") {
+    add.classList.remove("pressed");
+  } else if (key.code == "KeyC") {
+    clear.classList.remove("pressed");
   };
 };
 
@@ -162,24 +186,23 @@ function useCalc(id) {
   } else if (id == "add") {
     testContinue("+");
   } else if (id == "equals") {
-    calculation.value2 = Number(onScreen.join(""));
-    calculate();
+    testContinue();
   };
   boobies();
 };
 
-function testContinue() {
-  value = Number(onScreen.join(""));
-
+function testContinue(operant) {
   if (calculation.value1 === null) {
-    calculation.value1 = value;
+    calculation.operant = operant;
+    calculation.value1 = Number(onScreen.join(""));
+  } else if (calculation.value2 === null) {
+    calculation.operant = operant;
   } else {
-    calculation.value2 = value;
-    calculate();
+    calculation.value2 = Number(onScreen.join(""));
+    calculate(operant);
   };
-
   onScreen = [];
-}
+};
 
 function calculate() {
   if (calculation.operant == "/") {
@@ -191,15 +214,17 @@ function calculate() {
   } else if (calculation.operant == "+") {
     calculation.result = calculation.value1 + calculation.value2;
   };
-  onScreen = [];
-  result = Math.floor(calculation.result * 1000000000) / 1000000000;
-  if (String(result).length > 12) {
+
+  result = Math.floor(calculation.result * 1000000) / 1000000;
+
+  if (String(result).length > 9) {
     display.textContent = "ERR";
   } else {
     display.textContent = result;
   };
+
   calculation = {
-    value1: String(calculation.result),
+    value1: calculation.result,
     value2: null,
     operant: null,
     result: null,
