@@ -177,6 +177,8 @@ function useCalc(id) {
   } else if (id == "zero") {
     onScreen.push(0);
     display.textContent = onScreen.join("");
+  } else if (id == "decimal") {
+    isDecimal();
   } else if (id == "divide") {
     testContinue("/");
   } else if (id == "multiply") {
@@ -189,6 +191,15 @@ function useCalc(id) {
     testContinue();
   };
   boobies();
+};
+
+function isDecimal() {
+  if (onScreen.includes(".") == true) {
+    console.log("already a decimal");
+  } else {
+    onScreen.push(".");
+    display.textContent = onScreen.join("");
+  };
 };
 
 function testContinue(operant) {
