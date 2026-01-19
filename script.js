@@ -195,11 +195,12 @@ function testContinue(operant) {
   if (calculation.value1 === null) {
     calculation.operant = operant;
     calculation.value1 = Number(onScreen.join(""));
-  } else if (calculation.value2 === null) {
+  } else if (calculation.operant === null) {
     calculation.operant = operant;
+    calculation.value2 = Number(onScreen.join(""));
   } else {
     calculation.value2 = Number(onScreen.join(""));
-    calculate(operant);
+    calculate();
   };
   onScreen = [];
 };
