@@ -87,6 +87,9 @@ function useKey(key) {
   } else if (key.code == "KeyC") {
     clear.classList.add("pressed");
     useCalc("clear");
+  } else if (key.code == "Period") {
+    decimal.classList.add("pressed");
+    useCalc("decimal");
   };
 };
 
@@ -125,6 +128,8 @@ function stopUseKey(key) {
     add.classList.remove("pressed");
   } else if (key.code == "KeyC") {
     clear.classList.remove("pressed");
+  } else if (key.code == "Period") {
+    decimal.classList.remove("pressed");
   };
 };
 
