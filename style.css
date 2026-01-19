@@ -139,7 +139,7 @@ h1 {
   font-size: 48px;
   padding: 2px 8px;
   margin-bottom: 12px;
-  overflow: none;
+  overflow: hidden;
 }
 
 #keypad {
@@ -235,4 +235,26 @@ h1 {
 .socials {
   display: flex;
   align-items: center;
+}
+
+@media (max-width: 500px) {
+  #calculator {
+    height: auto;
+    width: 95vw;
+  }
+
+  .button, .front {
+    aspect-ratio: 1 / 1;
+    height: auto;
+    width: 20vw;
+    font-size: 24px;
+  }
+
+  #zero {
+    aspect-ratio: 2 / 1;
+  }
+
+  #display {
+    width: 85vw;
+  }
 }
