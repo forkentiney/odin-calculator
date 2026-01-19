@@ -233,7 +233,7 @@ function calculate() {
 };
 
 function boobies() {
-  if (display.textContent == "5318008") {
+  if (display.textContent == "5318008" || display.textContent == 5318008) {
     calculator.classList.add("rotated");
   } else {
     calculator.classList.remove("rotated");
