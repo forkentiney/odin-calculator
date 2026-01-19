@@ -257,4 +257,9 @@ h1 {
   #display {
     width: 85vw;
   }
+
+  #footer {
+    display: flex;
+    flex-direction: column;
+  }
 }
