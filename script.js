@@ -193,7 +193,7 @@ function useCalc(id) {
   } else if (id == "add") {
     testContinue("+");
   } else if (id == "equals") {
-    testContinue();
+    testContinue("equals");
   };
   boobies();
 };
@@ -213,10 +213,13 @@ function testContinue(operant) {
     calculation.value1 = Number(onScreen.join(""));
   } else if (calculation.operant === null) {
     calculation.operant = operant;
-    calculation.value2 = Number(onScreen.join(""));
-  } else {
+  } else if (operant == "equals") {
     calculation.value2 = Number(onScreen.join(""));
     calculate();
+  } else if (calculation.operant != null && calculation.value2 === null) {
+    calculation.value2 = Number(onScreen.join(""));
+    calculate();
+    calculation.operant = operant;
   };
   onScreen = [];
 };
